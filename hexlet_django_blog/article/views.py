@@ -1,6 +1,15 @@
 from django.shortcuts import render
+from django.views import View
 # from django.http import HttpResponse
 
 
-def index(request):
-    return render(request, 'articles/index.html', context={'title': 'the articles'})
+class Index(View):
+    template_name = 'articles/index.html'
+    
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+    def article(self, request, tags, article_id):
+        body = f"Article number: {article_id}. Tag: {tags}"
+        return render(request, self.template_name, context={'body': body})
+    
