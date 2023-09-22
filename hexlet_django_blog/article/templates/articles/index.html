@@ -1,4 +1,9 @@
-<title>{{ title }}</title>
-<h1>Articles index</h1>
-<p>{{ title }}</p>
-<p>{{ body }}</p>
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Список статей</h1>
+  {% for article in articles %}
+    <h2><a href="{% url 'article' id=article.id %}"{{ article.name }}</h2>
+    <div>{{ article.body|slice:":200" }}</div>
+  {% endfor %}
+{% endblock %}

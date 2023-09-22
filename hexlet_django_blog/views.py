@@ -11,10 +11,7 @@ class HomePageView(TemplateView):
         return context
 
     def get(self, request, *args, **kwargs):
-#        return render(request, self.template_name, context=self.get_context_data())
-        return redirect(
-            reverse('article', kwargs={'article_id': 42, 'tags': 'python'})
-        )
+        return render(request, self.template_name, context=self.get_context_data())
 
 
 def about(request):
